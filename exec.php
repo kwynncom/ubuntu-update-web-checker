@@ -13,7 +13,7 @@ function kwynn_ubuup_exec() {
     return shell_exec($cmd);
 }
 
-if (iscli()) {
+if (iscli() && 0) {
     $res = kwynn_ubuup_exec();
     echo $res . "\n";
     unset($res);
