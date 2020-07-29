@@ -4,9 +4,13 @@ require_once('/opt/kwynn/kwutils.php');
 
 function kwynn_ubuup_exec() {
     
-    if (isAWS()) $base = '/usr/bin/';
-    else         $base = '';
+    $base = '';
     
+    if (isAWS() && iscli()) $base .= 'sudo ';
+    
+    if (isAWS()) $base .= '/usr/bin/';
+    else         $base .= '';
+     
     $base .= 'ubuup';
     if (!isAWS()) $cmd  = $base . (PHP_SAPI === 'cli' ? 'cli' : '');
     else          $cmd  = $base;
