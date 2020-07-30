@@ -1,5 +1,6 @@
 <?php
 
+require_once('/opt/kwynn/kwutils.php');
 require_once('/opt/kwynn/isKwGoo.php');
 require_once('runBin.php');
 require_once('kernel.php');

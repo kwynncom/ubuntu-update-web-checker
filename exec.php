@@ -14,7 +14,10 @@ function kwynn_ubuup_exec() {
     $base .= 'ubuup';
     if (!isAWS()) $cmd  = $base . (PHP_SAPI === 'cli' ? 'cli' : '');
     else          $cmd  = $base;
-    return shell_exec($cmd);
+    
+    $res = shell_exec($cmd);
+
+    return $res;
 }
 
 if (iscli() && 0) {

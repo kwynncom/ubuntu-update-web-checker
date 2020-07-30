@@ -1,6 +1,6 @@
 <?php
 
-require_once('/opt/kwynn/isKwGoo.php');
+require_once('/opt/kwynn/kwutils.php');
 require_once('get.php');
 
 if (!getUbuup::isAuth()) 
