@@ -1,20 +1,14 @@
 <?php
 
 require_once('/opt/kwynn/isKwGoo.php');
-require_once('runBin.php');
-require_once('kernel.php');
+require_once('get.php');
 
-if (	!
-	    (isKwGoo() || isKwDev())
-    ) 
+if (!getUbuup::isAuth()) 
 { 
     exitNotAuth();
 }
 else {
-    $KWUPV = new runUpdateBin(1);
-    
-    kwPopKernelInfo($KWUPV);
-    
+    $KWUPV = getUbuup::get();
     if (PHP_SAPI !== 'cli') require_once('template.php');
     else var_dump($KWUPV);
     exit(0);
