@@ -8,7 +8,7 @@ void main(int argc, char *argv[])
 	
     setreuid(geteuid(), getuid());
     system("echo C is owned by `whoami`");
-    system("/home/k/sm20/ubuup/test/testsuid.php");
+    system("/somepath/ubuup/test/testsuid.php");
     system("/usr/bin/php ./t2.php");
 
 }
