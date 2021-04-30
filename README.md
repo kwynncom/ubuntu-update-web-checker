@@ -1,6 +1,10 @@
 # ubuntu-update-web-checker
 web display of Ubuntu updates - whether they are needed
 
+2021/04/30
+
+The wording changed again.  Now, in the event of no updates, one will get Linux newlines and perhaps another character.
+
 2021/01/02
 
 The wording of /etc/update-motd.d/90-updates-available changed between Ubuntu 18.04 and 20.04.  I'm removing the older language.

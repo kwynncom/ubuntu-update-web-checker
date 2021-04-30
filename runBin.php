@@ -35,7 +35,14 @@ class runUpdateBin {
     }
     
     private function get2Lines($cout) {
+	
+	if ($cout === "\n\n\n") { // 2021/04/30 format change
+	    $this->std = $this->security = false;
+	    return;
+	}
+
 	$cout = trim($cout);
+	
 	kwas($cout, 'cout false'); 
         kwas(strpos($cout, 'security update'), 'lang 1 bad');
 
