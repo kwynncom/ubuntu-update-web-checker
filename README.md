@@ -1,6 +1,10 @@
 # ubuntu-update-web-checker
 web display of Ubuntu updates - whether they are needed
 
+2021/05/07
+
+If there are updates but not security updates, the wording changed for that, too.  
+
 2021/04/30
 
 The wording changed again.  Now, in the event of no updates, one will get Linux newlines and perhaps another character.

@@ -7,8 +7,7 @@ void main(int argc, char *argv[]) { // version 2021/04/30 5:48pm EDT (New York /
         system("/etc/update-motd.d/98-reboot-required");
 }
 
-/* To create the binary, create and run the following bash script and then move the binary to somewhere in the PATH
- * Better yet, set the path in $base above.  See notes below
+/* To create the binary, create and run the following bash script and then move the binary to somewhere in the PATH.
  
 #! /bin/bash
 
@@ -25,5 +24,4 @@ sudo mv ubuup /usr/bin/ubuup
 -rws--s--- 1 root www-data 8472 Feb  4  2018 ubuup
 
 * As of sometime in early 2021, I am assuming ubuup is in /usr/bin or otherwise in the path.  I am assuming this locally, too.
-
- */
+*/

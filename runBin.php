@@ -36,23 +36,22 @@ class runUpdateBin {
     
     private function get2Lines($cout) {
 	
-	if ($cout === "\n\n\n") { // 2021/04/30 format change
+	if ($cout === "\n\n\n") {
 	    $this->std = $this->security = false;
 	    return;
 	}
 
 	$cout = trim($cout);
-	
 	kwas($cout, 'cout false'); 
-        kwas(strpos($cout, 'security update'), 'lang 1 bad');
 
 	$arr = explode("\n", $cout);
 	kwas($arr && count($arr) >= 2, 'arr is false or < 2');
 	preg_match('/(\d+) update/', $arr[0], $matches);
 	kwas(isset($matches[1]), 'row 1 failed');
 	$this->std =  $matches[1] > 0;
+		
 	preg_match('/(\d+) of these/', $arr[1], $matches);
-	kwas(isset($matches[1]), 'row 2 failed');
-	$this->security =  $matches[1] > 0;
+	if  (!isset($matches[1])) $this->security = false;
+	else			  $this->security =  $matches[1] > 0;
     }
 }
