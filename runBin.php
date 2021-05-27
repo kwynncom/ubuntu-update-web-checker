@@ -40,6 +40,12 @@ class runUpdateBin {
 	    $this->std = $this->security = false;
 	    return;
 	}
+	
+	if (trim($cout) === '*** System restart required ***') {
+	    $this->std = false;
+	    $this->security = true;
+	    return;
+	}
 
 	$cout = trim($cout);
 	kwas($cout, 'cout false'); 

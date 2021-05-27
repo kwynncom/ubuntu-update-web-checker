@@ -1,6 +1,11 @@
 # ubuntu-update-web-checker
 web display of Ubuntu updates - whether they are needed
 
+2021/05/27
+
+Handles the condition of no updates needed but system restart required.
+
+
 2021/05/07
 
 If there are updates but not security updates, the wording changed for that, too.  
