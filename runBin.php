@@ -50,14 +50,20 @@ class runUpdateBin {
 	$cout = trim($cout);
 	kwas($cout, 'cout false'); 
 
+// entirety of the output 2021/06/10:
+// 0 updates can be applied immediately.
+
 	$arr = explode("\n", $cout);
-	kwas($arr && count($arr) >= 2, 'arr is false or < 2');
-	preg_match('/(\d+) update/', $arr[0], $matches);
-	kwas(isset($matches[1]), 'row 1 failed');
-	$this->std =  $matches[1] > 0;
+	kwas($arr && count($arr) >= 1, 'arr is false or < 1');
+	preg_match('/(\d+) update/', $arr[0], $ms);
+	kwas(isset($ms[0]), 'row 0 failed');
 		
-	preg_match('/(\d+) of these/', $arr[1], $matches);
-	if  (!isset($matches[1])) $this->security = false;
-	else			  $this->security =  $matches[1] > 0;
+	$this->std =  $ms[0] > 0;
+	
+	if (!isset($arr[1])) { $this->security = false; return; }
+	
+	preg_match('/(\d+) of these/', $arr[1], $ms);
+	kwas(isset($ms[1]), 'second / security line fail');
+	$this->security =  $ms[1] > 0;
     }
 }
