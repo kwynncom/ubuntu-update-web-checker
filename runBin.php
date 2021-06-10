@@ -50,9 +50,6 @@ class runUpdateBin {
 	$cout = trim($cout);
 	kwas($cout, 'cout false'); 
 
-// entirety of the output 2021/06/10:
-// 0 updates can be applied immediately.
-
 	$arr = explode("\n", $cout);
 	kwas($arr && count($arr) >= 1, 'arr is false or < 1');
 	preg_match('/(\d+) update/', $arr[0], $ms);
