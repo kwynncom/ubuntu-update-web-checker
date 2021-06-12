@@ -58,8 +58,9 @@ class runUpdateBin {
 	$this->std =  $ms[0] > 0;
 	
 	if (!isset($arr[1])) { $this->security = false; return; }
+	if (!trim ($arr[1])) { $this->security = false; return; }
 	
-	preg_match('/(\d+) of these/', $arr[1], $ms);
+	if (!preg_match('/(\d+) of these/', $arr[1], $ms)) { $this->security = false; return; }
 	kwas(isset($ms[1]), 'second / security line fail');
 	$this->security =  $ms[1] > 0;
     }

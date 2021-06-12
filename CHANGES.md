@@ -1,3 +1,9 @@
+06/12 2:05pm EDT / Atlanta / New York / UTC -4
+
+1 update can be applied immediately.
+To see these additional updates run: apt list --upgradable
+[no comment on security]
+
 2021/06/10
 
 This was the entire output (once trimmed):
