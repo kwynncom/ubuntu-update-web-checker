@@ -9,6 +9,7 @@ function kwynn_ubuup_exec() {
      
     $base .= 'ubuup';
     $cmd  = $base;
+	if (iscli()) $cmd .= 'cli';
     
     $res = shell_exec($cmd);
 

@@ -7,3 +7,8 @@ sudo mv ubuup /usr/bin/ubuup
 echo compare live versus goal
 ls -l         /usr/bin/ubuup
 echo -rws--s--- 1 root www-data ubuup
+sudo cp /usr/bin/ubuup /usr/bin/ubuupcli
+MEU=`whoami`
+sudo chown root:$MEU      /usr/bin/ubuupcli
+sudo chmod ug+s      /usr/bin/ubuupcli
+ls -l         /usr/bin/ubuupcli
