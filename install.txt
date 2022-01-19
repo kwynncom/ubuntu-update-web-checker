@@ -1,0 +1,9 @@
+gcc updates.c
+mv a.out ubuup
+chmod 710 ubuup
+sudo chown root:www-data ubuup
+sudo chmod ug+s ubuup
+sudo mv ubuup /usr/bin/ubuup
+echo compare live versus goal
+ls -l         /usr/bin/ubuup
+echo -rws--s--- 1 root www-data ubuup
