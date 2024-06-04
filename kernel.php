@@ -2,8 +2,14 @@
 
 require_once('/opt/kwynn/kwutils.php');
 
+class kwubuupInfo { // only on test, and incomplete
+    public $kernr;
+    public $kernts;
+    public $kernv;
+}
+
 if (kwKernelAmITest()) {
-    $o = new stdClass();
+    $o = new kwubuupInfo();
     kwPopKernelInfo($o);
 }
 

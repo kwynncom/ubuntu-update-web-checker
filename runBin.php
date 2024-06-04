@@ -8,9 +8,13 @@ class runUpdateBin {
     public $status;
     public $err;
     public $reboot;
-    public $security;
-    public $std;
+    public readonly bool $security;
+    public readonly bool $std;
     public $vital;
+    public $kernv;
+    public $kernr;
+    public $kernts;
+    public $kerndtraw;
     
     function __construct($throw = false) {
 	try {
@@ -41,27 +45,56 @@ class runUpdateBin {
 	    return;
 	}
 	
-	if (trim($cout) === '*** System restart required ***') {
+	if ($cout && is_string($cout) && trim($cout) === '*** System restart required ***') {
 	    $this->std = false;
 	    $this->security = true;
 	    return;
 	}
+
+	kwas($cout && is_string($cout), 'cout falsey or not string');
 
 	$cout = trim($cout);
 	kwas($cout, 'cout false'); 
 
 	$arr = explode("\n", $cout);
 	kwas($arr && count($arr) >= 1, 'arr is false or < 1');
-	preg_match('/(\d+) update/', $arr[0], $ms);
-	kwas(isset($ms[0]), 'row 0 failed');
-		
-	$this->std =  $ms[0] > 0;
-	
-	if (!isset($arr[1])) { $this->security = false; return; }
-	if (!trim ($arr[1])) { $this->security = false; return; }
-	
-	if (!preg_match('/(\d+) of these/', $arr[1], $ms)) { $this->security = false; return; }
-	kwas(isset($ms[1]), 'second / security line fail');
-	$this->security =  $ms[1] > 0;
+	$this->setUpdateMOTD2404($arr);
+
     }
+
+    private function setUpdateMOTD2404(array $arr) {
+
+	$res = [];
+	
+
+	foreach($arr as $r) {
+    
+	    if (!isset($res['std'])) {
+		preg_match('/(\d+) update/', $r, $msstd);	
+		$res['std'] = $this->getTF($msstd);
+	    }
+	    if (!isset($res['security'])) {
+		preg_match('/(\d+) of these/', $r, $mssec);
+		$res['security'] = $this->getTF($mssec);
+	    }
+	}
+
+
+	foreach(['std', 'security'] as $f) {
+	    $t = kwifs($res, $f, ['kwiff' => null]);
+	    if (!isset($t)) {
+		if ($f === 'security') $this->security = false;
+		else if ($f === 'std') kwas(false, 'no value found for standard updates');
+	    } else $this->$f = $t;
+	}
+    }
+
+    private function getTF($ms) : bool | null {
+	if (!$ms || !isset($ms[1])) return null;
+	if (!is_numeric	  ($ms[1])) return null;
+	$n =	    intval($ms[1]);
+	if (!is_integer	  ($n)) return null;
+	return $n > 0;
+    }
+
 }
